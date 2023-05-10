@@ -1,0 +1,16 @@
+[master]
+10.5.6.50
+
+[raspberry]
+10.5.6.20
+100.90.127.90
+
+[ubuntu]
+10.5.6.50
+10.5.4.10
+
+[debian]
+
+[proxmox]
+
+[windows]
