@@ -1,0 +1,38 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+[master]
+
+[local]
+localhost ansible_connection=local ansible_python_interpreter="/usr/bin/python3.8"
+
+[raspberry]
+10.5.6.20
+100.90.127.90
+
+[ubuntu]
+10.5.4.10
+10.5.6.5
+
+[debian]
+
+[proxmox]
+
+[windows]
+
+[master:vars]
+ansible_user = ansible
+ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa 
+
+
+[raspberry:vars]
+ansible_user = ansible
+ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa 
+
+
