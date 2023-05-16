@@ -22,7 +22,7 @@ localhost ansible_connection=local ansible_python_interpreter="/usr/bin/python3.
 10.5.4.10
 10.5.6.5
 
-[test]
+[provisions]
 10.5.4.40
 
 [debian]
@@ -57,6 +57,12 @@ ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa
 ansible_ssh_user = pi
 ansible_ssh_pass = s?g!8i7K4V!SY$
 ansible_become_pass = s?g!8i7K4V!SY$
+ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa 
+
+[provisions:vars]
+ansible_ssh_user = tsiap
+ansible_ssh_pass = Czvczv20
+ansible_become_pass = Czvczv20 
 ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa 
 
 
