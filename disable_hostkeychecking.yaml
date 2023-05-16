@@ -1,0 +1,12 @@
+---
+- hosts: local
+  become: yes
+  tasks:
+    - name: Uncomment checking 
+      ansible.builtin.lineinfile:
+        path: /etc/ansible/ansible.cfg
+        search_string: 'host_key_checking=False'
+        line: '#host_key_checking=False'
+        owner: root
+        group: root
+        mode: '0644'

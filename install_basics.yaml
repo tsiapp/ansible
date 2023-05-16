@@ -10,16 +10,10 @@
       ansible.builtin.apt:
         name: "*"
         state: latest
-
-    - name: install smartmontools
+    - name: Install a list of packages
       ansible.builtin.apt:
-        name: smartmontools
-    
-    - name: install vim 
-      ansible.builtin.apt:
-        name: vim
-        
-        
-    - name: install htop
-      ansible.builtin.apt: 
-        name: htop
+        pkg:
+        - smartmontools
+        - vim
+        - htop
+        - curl
