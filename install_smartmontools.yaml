@@ -1,0 +1,8 @@
+---
+- hosts: test 
+  become: yes
+  tasks:
+    - name: install smartmontools
+      apt:
+        name: smartmontools
+        state: absent
