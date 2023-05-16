@@ -1,5 +1,5 @@
 ---
-- hosts: raspberry
+- hosts: raspberry_mtl
   become: yes
   tasks:
     - name: get update

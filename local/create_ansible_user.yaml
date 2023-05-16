@@ -1,5 +1,5 @@
 ---
-- hosts: raspberry
+- hosts: local 
   become: yes
   tasks:
   - name: Add a new user named ansible

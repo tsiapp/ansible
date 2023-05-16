@@ -1,5 +1,5 @@
 ---
-- hosts: raspberry
+- hosts: ubuntu
   become: yes
   tasks:
     - name: get update
