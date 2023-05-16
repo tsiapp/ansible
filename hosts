@@ -48,6 +48,12 @@ ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
 #ansible_ssh_private_key_file=/home/tsiapp/.ssh/id_rsa 
 
 [raspberry:vars]
+ansible_ssh_user = tsiap
+ansible_ssh_pass = Czvczv20
+ansible_become_pass = Czvczv20 
+ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa 
+
+[raspberry_mtl:vars]
 ansible_ssh_user = pi
 ansible_ssh_pass = s?g!8i7K4V!SY$
 ansible_become_pass = s?g!8i7K4V!SY$
