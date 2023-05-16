@@ -20,12 +20,9 @@ localhost ansible_connection=local ansible_python_interpreter="/usr/bin/python3.
 10.5.4.10
 10.5.6.5
 
-<<<<<<< HEAD
 [test]
 10.5.4.40
 
-=======
->>>>>>> c07f12d8f2c2e143868c613610bf30ea2f623876
 [debian]
 
 [proxmox]
@@ -36,7 +33,6 @@ localhost ansible_connection=local ansible_python_interpreter="/usr/bin/python3.
 ansible_user = ansible
 ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa 
 
-<<<<<<< HEAD
 [raspberry:vars]
 ansible_user = ansible
 ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa 
@@ -58,11 +54,4 @@ ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa
 
 
 
-=======
-
-[raspberry:vars]
-ansible_user = ansible
-ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa 
-
->>>>>>> c07f12d8f2c2e143868c613610bf30ea2f623876
 

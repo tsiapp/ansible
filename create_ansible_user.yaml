@@ -19,4 +19,4 @@
       state: present
       regexp: '^%sudo'
       line: '%sudo ALL=(ALL) NOPASSWD: ALL'
-
+      validate: /usr/sbin/visudo -cf %s
