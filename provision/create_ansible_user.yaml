@@ -1,12 +1,11 @@
 ---
-- hosts: raspberry
+- hosts: provisions
   become: yes
   tasks:
   - name: Add a new user named ansible
     ansible.builtin.user:
       name: ansible
       shell: /bin/bash
-      groups: sudo
       password: $6$/kouQc29ofp$OskonHoWsBJ7Q1IMw5ZMi/TAu4S.8e5sWo45k7/LHXiDKG2wswcxFAM5jT1CYHaYjFJcV.qdLWEfnXrKhc3Uw0
   - name: Install public keys
     ansible.posix.authorized_key:
@@ -14,10 +13,7 @@
       state: present
       key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
 
-  - name: Add ansible to the sudoers
-    lineinfile:
-      path: /etc/sudoers
-      state: present
-      regexp: '^%sudo'
-      line: '%sudo ALL=(ALL) NOPASSWD: ALL'
-      validate: /usr/sbin/visudo -cf %s
+  - name: Add devops user to the sudoers
+    copy:
+      dest: /etc/sudoers.d/ansible
+      content: 'ansible ALL=(ALL) NOPASSWD: ALL'
