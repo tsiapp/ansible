@@ -1,0 +1,12 @@
+---
+- hosts: test 
+  become: yes
+  tasks:
+    - name: Uncomment line to do nothing when lid is closed 
+      ansible.builtin.lineinfile:
+        path: /etc/systemd/logind.conf
+        search_string: '#HandleLidSwitch=suspend'
+        line: HandleLidSwitch=ignore
+        owner: root
+        group: root
+        mode: '0644'
