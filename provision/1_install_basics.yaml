@@ -1,5 +1,5 @@
 ---
-- hosts: raspberry
+- hosts: provisions
   become: yes
   tasks:
     - name: get update
