@@ -1,0 +1,19 @@
+---
+- hosts: provisions 
+  become: yes
+  tasks:
+    - name: Copy smart_parser with owner and permissions
+      ansible.builtin.copy:
+        src: /etc/cron.daily/smart_parser.sh
+        dest: /etc/cron.daily/
+        owner: root
+        group: root
+        mode: '0755'
+    
+    - name: Copy cron job smart_parser
+      ansible.builtin.copy:
+        src: /etc/cron.d/smart_parser
+        dest: /etc/cron.d/
+        owner: root
+        group: root
+        mode: '0644'
