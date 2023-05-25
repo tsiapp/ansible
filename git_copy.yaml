@@ -8,5 +8,8 @@
         dest: /home/tsiapp/git/
         delete: true
         recursive: true  
+<<<<<<< HEAD
         rsync_opts:
         - "--chown=ansible:ansible"
+=======
+>>>>>>> 4910558f8dbc9f92390ce16b988be2fb0770eb02

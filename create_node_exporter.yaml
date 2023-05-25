@@ -73,3 +73,32 @@
     ansible.builtin.systemd:
       enabled: true
       name: node_exporter
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+      #  - name: Download node_explorer
+      #    ansible.builtin.get_url:
+      #url: https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
+      #dest: /etc/data/temp/
+      #mode: '0440'
+
+       #  - name: Remove file (delete file)
+       #    ansible.builtin.file:
+       #       path: /etc/foo.txt
+       #       state: absent
+
+       #  - name: Recursively remove directory
+       #    ansible.builtin.file:
+       #       path: /etc/foo
+       #       state: absent
+
+       #  - name: Unarchive the file
+       #    ansible.builtin.unarchive:
+       #       src: https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
+       #       dest: /usr/local/bin
+       #       remote_src: yes
+
+>>>>>>> 0037ed9bd6fdd03fdcccf7bb2e63e6772666f48e
+>>>>>>> 4910558f8dbc9f92390ce16b988be2fb0770eb02
