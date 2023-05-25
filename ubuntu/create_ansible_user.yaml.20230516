@@ -1,11 +1,12 @@
 ---
-- hosts: raspberry
+- hosts: ubuntu
   become: yes
   tasks:
   - name: Add a new user named ansible
     ansible.builtin.user:
       name: ansible
       shell: /bin/bash
+      groups: sudo
       password: $6$/kouQc29ofp$OskonHoWsBJ7Q1IMw5ZMi/TAu4S.8e5sWo45k7/LHXiDKG2wswcxFAM5jT1CYHaYjFJcV.qdLWEfnXrKhc3Uw0
   - name: Install public keys
     ansible.posix.authorized_key:
