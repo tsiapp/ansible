@@ -1,0 +1,12 @@
+---
+- hosts: local 
+  become: yes
+  tasks:
+    - name: Copy ansible files to git folder
+      ansible.posix.synchronize:
+        src: /etc/ansible/
+        dest: /home/tsiapp/git/
+        delete: true
+        recursive: true  
+        rsync_opts:
+        - "--chown=ansible:ansible"

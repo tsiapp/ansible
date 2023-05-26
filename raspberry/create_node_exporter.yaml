@@ -1,0 +1,75 @@
+---
+- hosts: raspberry
+  become: yes
+  tasks:
+  - name: Add a new user named node_exporter
+    ansible.builtin.user:
+      name: node_exporter
+      shell: /bin/bash
+      # groups: node_exporter
+      createhome: no
+      password: $6$krbdycmILO71cFD$6D3lrTYOyAkAWcHDgk48PVozMYoyAvfJYw4112cFio8SEelfI1uB1RmjT4oVH6gLW.O7MiwhJr5mjuN/aXFaz1
+
+  - name: Add node_exporter user to the sudoers
+    copy:
+      dest: /etc/sudoers.d/node_exporter
+      content: node_exporter ALL=(ALL) NOPASSWD:ALL
+      
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+       path: /etc/data/temp/
+       state: directory
+       mode: '0755'
+
+  - name: Unarchive the file
+    ansible.builtin.unarchive:
+      src: https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
+      dest: /etc/data/temp/
+      remote_src: yes
+
+  - name: Copy node_exporter file
+    ansible.builtin.copy:
+      src: /etc/data/temp/node_exporter-1.5.0.linux-amd64/node_exporter
+      dest: /usr/bin/
+      owner: node_exporter
+      group: node_exporter
+      mode: '0755'
+      remote_src: yes
+   
+  - name: Creating a file with content
+    copy:
+      dest: "/etc/systemd/system/node_exporter.service"
+      content: |
+        [Unit]
+        Description=Node Exporter
+        Documentation=https://prometheus.io/docs/guides/node-exporter/
+        Wants=network-online.target
+        After=network-online.target
+        [Service]
+        User=node_exporter
+        Group=node_exporter
+        Type=simple
+        Restart=on-failure
+        ExecStart=/usr/bin/node_exporter 
+        [Install]
+        WantedBy=multi-user.target
+
+  - name: reboot the machine
+    ansible.builtin.reboot:
+
+  - name: Reload daemon
+    become: true    
+    ansible.builtin.systemd:
+      daemon-reload: true
+
+  - name: Start node_exporter
+    become: true    
+    ansible.builtin.systemd:
+      state: started
+      name: node_exporter
+  
+  - name: Enable node_exporter
+    become: true    
+    ansible.builtin.systemd:
+      enabled: true
+      name: node_exporter

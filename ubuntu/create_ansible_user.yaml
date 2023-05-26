@@ -14,9 +14,6 @@
       key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
 
   - name: Add devops user to the sudoers
-    lineinfile:
-      path: /etc/sudoers
-      state: present
-      regexp: '^%sudo'
-      line: '%sudo ALL=(ALL) NOPASSWD: ALL'
-      validate: /usr/sbin/visudo -cf %s
+    copy:
+      dest: /etc/sudoers.d/ansible
+      content: 'ansible ALL=(ALL) NOPASSWD: ALL'
