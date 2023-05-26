@@ -1,0 +1,20 @@
+---
+#only on the machine where the ups is plugged
+- hosts: provisions 
+  become: yes
+  tasks:
+  - name: Copy ups with owner and permissions
+    ansible.builtin.copy:
+      src: /home/tsiapp/cronjob/ups.sh
+      dest: /etc/cron.daily/
+      owner: root
+      group: root
+      mode: '0755'
+
+  - name: Copy cron job ups
+    ansible.builtin.copy:
+      src: /home/tsiapp/cronjob/ups
+      dest: /etc/cron.d/
+      owner: root
+      group: root
+      mode: '0644'
