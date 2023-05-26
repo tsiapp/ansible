@@ -22,7 +22,11 @@ localhost ansible_connection=local ansible_python_interpreter="/usr/bin/python3.
 10.5.6.5
 
 [provisions]
+<<<<<<< HEAD
 10.5.6.5
+=======
+10.5.4.40
+>>>>>>> 18fe96836988f12f743068717701bd1c449af437
 
 [debian]
 
@@ -62,6 +66,12 @@ localhost ansible_connection=local ansible_python_interpreter="/usr/bin/python3.
 ansible_ssh_user = tsiap
 ansible_ssh_pass = 951
 ansible_become_pass = 951
+ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa 
+
+[provisions:vars]
+ansible_ssh_user = tsiap
+ansible_ssh_pass = Czvczv20
+ansible_become_pass = Czvczv20 
 ansible_ssh_private_key_file=/home/tsiap/.ssh/id_rsa 
 
 

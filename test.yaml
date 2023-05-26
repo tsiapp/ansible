@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - hosts: provisions 
   become: yes
   gather_facts: false
@@ -66,3 +67,14 @@
       url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
       dest: /usr/local/bin/docker-compose
       mode: 'u+x,g+x'
+=======
+- hosts: local 
+  become: yes
+  tasks:
+    - name: Synchronize and delete files in dest on the remote host that are not found in src of localhost.
+      ansible.posix.synchronize:
+        src: /etc/ansible/
+        dest: /home/tsiapp/git/
+        delete: true
+        recursive: true
+>>>>>>> 18fe96836988f12f743068717701bd1c449af437

@@ -6,6 +6,7 @@
     ansible.builtin.user:
       name: ansible
       shell: /bin/bash
+      groups: sudo
       password: $6$/kouQc29ofp$OskonHoWsBJ7Q1IMw5ZMi/TAu4S.8e5sWo45k7/LHXiDKG2wswcxFAM5jT1CYHaYjFJcV.qdLWEfnXrKhc3Uw0
   - name: Install public keys
     ansible.posix.authorized_key:
@@ -13,7 +14,23 @@
       state: present
       key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
 
+<<<<<<< HEAD:provision/create_ansible_user.yaml
   - name: Add devops user to the sudoers
     copy:
       dest: /etc/sudoers.d/ansible
       content: 'ansible ALL=(ALL) NOPASSWD: ALL'
+<<<<<<< HEAD:provision/create_ansible_user.yaml
+=======
+<<<<<<< HEAD:provision/create_ansible_user.yaml
+=======
+=======
+  - name: Add ansible to the sudoers
+    lineinfile:
+      path: /etc/sudoers
+      state: present
+      regexp: '^%sudo'
+      line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+      validate: /usr/sbin/visudo -cf %s
+>>>>>>> 1188d72123276542e7d3436c2bb77e73dff09ca9:create_ansible_user.yaml
+>>>>>>> f7c31ba3d6c433c173df10361885544a66a8b91d:create_ansible_user.yaml
+>>>>>>> 18fe96836988f12f743068717701bd1c449af437:create_ansible_user.yaml
