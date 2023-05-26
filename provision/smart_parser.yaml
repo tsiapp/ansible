@@ -8,7 +8,11 @@
         dest: /etc/cron.daily/
         owner: root
         group: root
+<<<<<<< HEAD
         mode: '0755'
+=======
+        mode: '0644'
+>>>>>>> f7c31ba3d6c433c173df10361885544a66a8b91d
     
     - name: Copy cron job smart_parser
       ansible.builtin.copy:
