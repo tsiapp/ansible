@@ -1,0 +1,9 @@
+- hosts: local 
+  become: yes
+  tasks:
+    - name: Synchronize and delete files in dest on the remote host that are not found in src of localhost.
+      ansible.posix.synchronize:
+        src: /etc/ansible/
+        dest: /home/tsiapp/git/
+        delete: true
+        recursive: true
